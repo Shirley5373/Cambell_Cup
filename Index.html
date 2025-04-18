@@ -231,12 +231,62 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  function showRoster(weekName) {
-    document.getElementById('rosterModalLabel').textContent = weekName + " Roster";
-    document.getElementById('rosterModalBody').innerHTML = `<p>Roster info for <strong>${weekName}</strong> will go here.</p>`;
-    var rosterModal = new bootstrap.Modal(document.getElementById('rosterModal'));
-    rosterModal.show();
+function showRoster(weekName) {
+  document.getElementById('rosterModalLabel').textContent = weekName + " Roster";
+
+  // Extract just the number (e.g. "1" from "Week 1")
+  const weekNumber = weekName.match(/\d+/) ? weekName.match(/\d+/)[0] : weekName;
+
+  // Build the 32 rows with correct week number
+  let rows = '';
+  for (let i = 0; i < 32; i++) {
+    rows += `
+      <tr>
+        <td>${weekNumber}</td><td></td><td></td><td></td>
+        <td>${weekNumber}</td><td></td><td></td><td></td>
+        <td>${weekNumber}</td><td></td><td></td><td></td>
+        <td>${weekNumber}</td><td></td><td></td><td></td>
+        <td>${weekNumber}</td><td></td><td></td><td></td>
+        <td>${weekNumber}</td><td></td><td></td><td></td>
+        <td>${weekNumber}</td><td></td><td></td><td></td>
+      </tr>
+    `;
   }
+
+  // Inject full table with updated week number into modal
+  document.getElementById('rosterModalBody').innerHTML = `
+    <div class="table-responsive">
+      <table class="table table-bordered text-center small">
+        <thead class="table-dark align-middle">
+          <tr>
+            <th colspan="4">QUARTERBACK</th>
+            <th colspan="4">RUNNING BACK</th>
+            <th colspan="4">WIDE RECEIVER</th>
+            <th colspan="4">WIDE RECEIVER</th>
+            <th colspan="4">TIGHT END</th>
+            <th colspan="4">KICKER</th>
+            <th colspan="4">TOTAL</th>
+          </tr>
+          <tr>
+            <th>Wk</th><th>Team</th><th>Player</th><th>Points</th>
+            <th>Wk</th><th>Team</th><th>Player</th><th>Points</th>
+            <th>Wk</th><th>Team</th><th>Player</th><th>Points</th>
+            <th>Wk</th><th>Team</th><th>Player</th><th>Points</th>
+            <th>Wk</th><th>Team</th><th>Player</th><th>Points</th>
+            <th>Wk</th><th>Team</th><th>Player</th><th>Points</th>
+            <th>Wk</th><th>Team</th><th>Points</th><th>Rem.</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  var rosterModal = new bootstrap.Modal(document.getElementById('rosterModal'));
+  rosterModal.show();
+}
 </script>
 </body>
 </html>
