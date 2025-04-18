@@ -197,7 +197,81 @@
   </div>
 
 
-    <div class="tab-pane fade" id="stats" role="tabpanel"></div>
+    <!-- STATS TAB CONTENT -->
+<div class="tab-pane fade" id="stats" role="tabpanel">
+  <div class="row g-3">
+    <div class="col-md-3 col-sm-6" onclick="showStats('Total Points For')">
+      <div class="border p-4 text-center bg-info rounded">Total Points For</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showStats('Total Points Against')">
+      <div class="border p-4 text-center bg-info rounded">Total Points Against</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showStats('Total Point Differential')">
+      <div class="border p-4 text-center bg-info rounded">Total Point Differential</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showStats('QB Points')">
+      <div class="border p-4 text-center bg-info rounded">QB Points</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showStats('RB Points')">
+      <div class="border p-4 text-center bg-info rounded">RB Points</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showStats('WR Points')">
+      <div class="border p-4 text-center bg-info rounded">WR Points</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showStats('TE Points')">
+      <div class="border p-4 text-center bg-info rounded">TE Points</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showStats('K Points')">
+      <div class="border p-4 text-center bg-info rounded">K Points</div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR STATS -->
+<div class="modal fade" id="statsModal" tabindex="-1" aria-labelledby="statsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="statsModalLabel">Stats</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="statsModalBody">
+        <p>Select a section to view stats.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showStats(section) {
+  document.getElementById('statsModalLabel').textContent = section;
+
+  let rows = '';
+  for (let i = 1; i <= 32; i++) {
+    rows += `
+      <tr>
+        <td>${i}</td><td>Player ${i}</td><td></td><td></td>
+      </tr>
+    `;
+  }
+
+  document.getElementById('statsModalBody').innerHTML = `
+    <div class="table-responsive">
+      <table class="table table-bordered text-center small">
+        <thead class="table-dark">
+          <tr>
+            <th>Rank</th><th>Player</th><th>Sum</th><th>Avg</th>
+          </tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+
+  const modal = new bootstrap.Modal(document.getElementById('statsModal'));
+  modal.show();
+}
+</script>
     <div class="tab-pane fade" id="mvp" role="tabpanel"></div>
     <div class="tab-pane fade" id="lvp" role="tabpanel"></div>
     <div class="tab-pane fade" id="sixteens" role="tabpanel"></div>
