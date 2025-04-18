@@ -124,7 +124,51 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="rosters" role="tabpanel"></div>
+    <div class="tab-pane fade" id="rosters" role="tabpanel">
+  <div class="row g-3">
+    <!-- Generate 18 regular season weeks -->
+    <!-- You can repeat this block or do a loop in JS if preferred -->
+    <!-- Sample for Week 1–18 -->
+    <!-- Regular Weeks -->
+    <div class="col-md-3 col-sm-6" onclick="showRoster('Week 1')">
+      <div class="border p-4 text-center bg-light rounded">Week 1</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showRoster('Week 2')">
+      <div class="border p-4 text-center bg-light rounded">Week 2</div>
+    </div>
+    <!-- Repeat through Week 18 -->
+    <!-- Playoffs -->
+    <div class="col-md-3 col-sm-6" onclick="showRoster('Wild Card')">
+      <div class="border p-4 text-center bg-warning rounded">Wild Card</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showRoster('Quarterfinals')">
+      <div class="border p-4 text-center bg-warning rounded">Quarterfinals</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showRoster('Semifinals')">
+      <div class="border p-4 text-center bg-warning rounded">Semifinals</div>
+    </div>
+    <div class="col-md-3 col-sm-6" onclick="showRoster('Final')">
+      <div class="border p-4 text-center bg-warning rounded">Final</div>
+    </div>
+  </div>
+
+  <!-- Modal for roster popup -->
+  <div class="modal fade" id="rosterModal" tabindex="-1" aria-labelledby="rosterModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="rosterModalLabel">Roster Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="rosterModalBody">
+          <!-- Content for each week's roster will go here -->
+          <p>Select a week to view roster information.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
     <div class="tab-pane fade" id="stats" role="tabpanel"></div>
     <div class="tab-pane fade" id="mvp" role="tabpanel"></div>
     <div class="tab-pane fade" id="lvp" role="tabpanel"></div>
@@ -137,6 +181,13 @@
 </main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/main.js"></script>
+<script>
+  function showRoster(weekName) {
+    document.getElementById('rosterModalLabel').textContent = weekName + " Roster";
+    document.getElementById('rosterModalBody').innerHTML = `<p>Roster info for <strong>${weekName}</strong> will go here.</p>`;
+    var rosterModal = new bootstrap.Modal(document.getElementById('rosterModal'));
+    rosterModal.show();
+  }
+</script>
 </body>
 </html>
