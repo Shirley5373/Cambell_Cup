@@ -33,105 +33,96 @@
   </nav>
 
   <main class="container my-4">
-    <section id="schedule"></section>
-    <section id="standings" class="mb-5">
-  <h2 class="text-center my-4">Standings</h2>
+  <!-- Tabs navigation -->
+  <ul class="nav nav-tabs" id="leagueTabs" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#schedule" type="button">Schedule</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#standings" type="button">Standings</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#rosters" type="button">Rosters</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#stats" type="button">Stats</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#mvp" type="button">MVP</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#lvp" type="button">LVP</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#sixteens" type="button">16's</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#luck" type="button">Luck</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#avgGraphs" type="button">Avg. Graphs</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#playerList" type="button">Player List</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#players" type="button">Players</button></li>
+  </ul>
 
-  <!-- American Football Conference -->
-  <h3>American Football Conference</h3>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped text-center align-middle">
-      <thead class="table-dark">
-        <tr>
-          <th>RANK</th>
-          <th>TEAM</th>
-          <th>ABV.</th>
-          <th colspan="4">ACTUAL</th>
-          <th>STREAK</th>
-          <th colspan="3">EXPECTED</th>
-          <th>DIF.</th>
-          <th>PF</th>
-          <th>PA</th>
-          <th>PD</th>
-          <th>MVP</th>
-          <th>LVP</th>
-          <th>LUCK</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- You will loop through your team data here -->
-        <tr>
-          <td>1*</td>
-          <td>Greg Ward</td>
-          <td>GW</td>
-          <td>9</td><td>5</td><td>0.643</td><td>0</td>
-          <td>1W</td>
-          <td>8</td><td>6</td><td>0.571</td>
-          <td>1</td>
-          <td>1010.7</td>
-          <td>856.6</td>
-          <td>154.1</td>
-          <td>4</td>
-          <td>11</td>
-          <td>19.0</td>
-        </tr>
-        <!-- Add 15 more rows for AFC -->
-      </tbody>
-    </table>
-  </div>
+  <!-- Tabs content -->
+  <div class="tab-content pt-4">
+    <div class="tab-pane fade show active" id="schedule" role="tabpanel"></div>
 
-  <!-- National Football Conference -->
-  <h3>National Football Conference</h3>
-  <div class="table-responsive">
-    <table class="table table-bordered table-striped text-center align-middle">
-      <thead class="table-dark">
-        <tr>
-          <th>RANK</th>
-          <th>TEAM</th>
-          <th>ABV.</th>
-          <th colspan="4">ACTUAL</th>
-          <th>STREAK</th>
-          <th colspan="3">EXPECTED</th>
-          <th>DIF.</th>
-          <th>PF</th>
-          <th>PA</th>
-          <th>PD</th>
-          <th>MVP</th>
-          <th>LVP</th>
-          <th>LUCK</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1*</td>
-          <td>Daryoush Vafa</td>
-          <td>DV</td>
-          <td>10</td><td>4</td><td>0.714</td><td>0</td>
-          <td>5W</td>
-          <td>8</td><td>6</td><td>0.571</td>
-          <td>2</td>
-          <td>956.3</td>
-          <td>826.0</td>
-          <td>130.3</td>
-          <td>3</td>
-          <td>19</td>
-          <td>14.0</td>
-        </tr>
-        <!-- Add 15 more rows for NFC -->
-      </tbody>
-    </table>
+    <div class="tab-pane fade" id="standings" role="tabpanel">
+      <h2 class="text-center my-4">Standings</h2>
+
+      <!-- American Football Conference -->
+      <h3>American Football Conference</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>RANK</th><th>TEAM</th><th>ABV.</th>
+              <th colspan="4">ACTUAL</th><th>STREAK</th>
+              <th colspan="3">EXPECTED</th><th>DIF.</th>
+              <th>PF</th><th>PA</th><th>PD</th>
+              <th>MVP</th><th>LVP</th><th>LUCK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1*</td><td>Greg Ward</td><td>GW</td>
+              <td>9</td><td>5</td><td>0.643</td><td>0</td>
+              <td>1W</td>
+              <td>8</td><td>6</td><td>0.571</td>
+              <td>1</td>
+              <td>1010.7</td><td>856.6</td><td>154.1</td>
+              <td>4</td><td>11</td><td>19.0</td>
+            </tr>
+            <!-- Add other AFC rows here -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- National Football Conference -->
+      <h3>National Football Conference</h3>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th>RANK</th><th>TEAM</th><th>ABV.</th>
+              <th colspan="4">ACTUAL</th><th>STREAK</th>
+              <th colspan="3">EXPECTED</th><th>DIF.</th>
+              <th>PF</th><th>PA</th><th>PD</th>
+              <th>MVP</th><th>LVP</th><th>LUCK</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1*</td><td>Daryoush Vafa</td><td>DV</td>
+              <td>10</td><td>4</td><td>0.714</td><td>0</td>
+              <td>5W</td>
+              <td>8</td><td>6</td><td>0.571</td>
+              <td>2</td>
+              <td>956.3</td><td>826.0</td><td>130.3</td>
+              <td>3</td><td>19</td><td>14.0</td>
+            </tr>
+            <!-- Add other NFC rows here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="rosters" role="tabpanel"></div>
+    <div class="tab-pane fade" id="stats" role="tabpanel"></div>
+    <div class="tab-pane fade" id="mvp" role="tabpanel"></div>
+    <div class="tab-pane fade" id="lvp" role="tabpanel"></div>
+    <div class="tab-pane fade" id="sixteens" role="tabpanel"></div>
+    <div class="tab-pane fade" id="luck" role="tabpanel"></div>
+    <div class="tab-pane fade" id="avgGraphs" role="tabpanel"></div>
+    <div class="tab-pane fade" id="playerList" role="tabpanel"></div>
+    <div class="tab-pane fade" id="players" role="tabpanel"></div>
   </div>
-</section>
-    <section id="rosters"></section>
-    <section id="stats"></section>
-    <section id="mvp"></section>
-    <section id="lvp"></section>
-    <section id="sixteens"></section>
-    <section id="luck"></section>
-    <section id="avgGraphs"></section>
-    <section id="playerList"></section>
-    <section id="players"></section>
-  </main>
+</main>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/main.js"></script>
