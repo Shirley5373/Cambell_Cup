@@ -229,17 +229,24 @@
   </div>
 </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+  <script>
 function showRoster(weekName) {
   document.getElementById('rosterModalLabel').textContent = weekName + " Roster";
 
-  // Extract just the number (e.g. "1" from "Week 1")
-  const weekNumber = weekName.match(/\d+/) ? weekName.match(/\d+/)[0] : weekName;
+  let rowCount = 32; // default for regular weeks
 
-  // Build the 32 rows with correct week number
+  // Custom row counts for playoffs
+  if (weekName === "Wild Card") rowCount = 12;
+  else if (weekName === "Quarterfinals") rowCount = 8;
+  else if (weekName === "Semifinals") rowCount = 4;
+  else if (weekName === "Final") rowCount = 2;
+
+  // Extract number from Week name or fallback to "P" for playoffs
+  const weekNumber = weekName.match(/\d+/) ? weekName.match(/\d+/)[0] : "P";
+
+  // Build the rows
   let rows = '';
-  for (let i = 0; i < 32; i++) {
+  for (let i = 0; i < rowCount; i++) {
     rows += `
       <tr>
         <td>${weekNumber}</td><td></td><td></td><td></td>
@@ -253,7 +260,7 @@ function showRoster(weekName) {
     `;
   }
 
-  // Inject full table with updated week number into modal
+  // Build the table
   document.getElementById('rosterModalBody').innerHTML = `
     <div class="table-responsive">
       <table class="table table-bordered text-center small">
@@ -284,8 +291,8 @@ function showRoster(weekName) {
     </div>
   `;
 
-  var rosterModal = new bootstrap.Modal(document.getElementById('rosterModal'));
-  rosterModal.show();
+  const modal = new bootstrap.Modal(document.getElementById('rosterModal'));
+  modal.show();
 }
 </script>
 </body>
