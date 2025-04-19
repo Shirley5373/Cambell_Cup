@@ -321,6 +321,19 @@
   </div>
 </div>
 
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Check if any tab is already marked as active
+    const activeTab = document.querySelector('.tab-pane.show.active');
+    
+    // If not, default to showing the "schedule" tab
+    if (!activeTab) {
+      document.querySelector('#schedule').classList.add('show', 'active');
+      document.querySelector('button[data-bs-target="#schedule"]').classList.add('active');
+    }
+  });
+</script>
+    
 <script>
 function showStats(section) {
   document.getElementById('statsModalLabel').textContent = section;
