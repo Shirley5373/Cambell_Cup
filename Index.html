@@ -32,7 +32,51 @@
 
   <!-- Tabs content -->
   <div class="tab-content pt-4">
-    <div class="tab-pane fade show active" id="schedule" role="tabpanel"></div>
+    <!-- Schedule Tab -->
+<div class="tab-pane fade" id="schedule" role="tabpanel">
+  <div class="row g-3">
+    <!-- Week Buttons -->
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 1')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 1</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 2')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 2</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 3')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 3</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 4')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 4</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 5')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 5</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 6')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 6</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 7')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 7</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 8')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 8</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 9')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 9</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 10')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 10</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 11')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 11</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 12')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 12</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 13')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 13</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 14')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 14</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 15')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 15</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 16')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 16</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 17')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 17</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Week 18')"><div class="border p-4 text-center bg-secondary text-white rounded">Week 18</div></div>
+
+    <!-- Playoff Buttons -->
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Wild Card')"><div class="border p-4 text-center bg-secondary text-white rounded">Wild Card</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Quarterfinals')"><div class="border p-4 text-center bg-secondary text-white rounded">Quarterfinals</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Semifinals')"><div class="border p-4 text-center bg-secondary text-white rounded">Semifinals</div></div>
+    <div class="col-md-3 col-sm-6" onclick="showSchedule('Final')"><div class="border p-4 text-center bg-secondary text-white rounded">Final</div></div>
+  </div>
+</div>
+
+<!-- Modal for Schedule -->
+<div class="modal fade" id="scheduleModal" tabindex="-1" aria-labelledby="scheduleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="scheduleModalLabel">Schedule Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="scheduleModalBody">
+        <p>Select a week to view schedule information.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
     <div class="tab-pane fade" id="standings" role="tabpanel">
       <h2 class="text-center my-4">Standings</h2>
@@ -380,6 +424,40 @@ function showRoster(weekName) {
   `;
 
   const modal = new bootstrap.Modal(document.getElementById('rosterModal'));
+  modal.show();
+}
+</script>
+  <script>
+function showSchedule(weekName) {
+  document.getElementById('scheduleModalLabel').textContent = weekName + " Schedule";
+
+  let rowCount = 32;
+  if (weekName === "Wild Card") rowCount = 12;
+  else if (weekName === "Quarterfinals") rowCount = 8;
+  else if (weekName === "Semifinals") rowCount = 4;
+  else if (weekName === "Final") rowCount = 2;
+
+  let rows = '';
+  for (let i = 0; i < rowCount; i++) {
+    rows += `
+      <tr>
+        <td></td><td></td><td></td><td></td>
+      </tr>
+    `;
+  }
+
+  document.getElementById('scheduleModalBody').innerHTML = `
+    <div class="table-responsive">
+      <table class="table table-bordered text-center small">
+        <thead class="table-dark align-middle">
+          <tr><th>Team</th><th>Pts</th><th>Opp</th><th>Pts</th></tr>
+        </thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
+
+  const modal = new bootstrap.Modal(document.getElementById('scheduleModal'));
   modal.show();
 }
 </script>
